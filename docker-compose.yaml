@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+
+  chat_frontend:
+    build:
+      context: .
+      dockerfile: "Dockerfile.frontend"
+    command: sh -c "npx serve -s build -l 5173"
+
+    ports:
+      - "5173 : 5173"

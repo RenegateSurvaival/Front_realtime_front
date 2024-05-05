@@ -4,8 +4,6 @@ import { validateUsername } from '../../validations/login';
 import { validatePassword } from '../../validations/password';
 import style from './LoginForm.module.scss';
 import { useEffect, useState } from 'react';
-import { hiText } from './hi_text';
-import UseLocalStorage from '../../hooks/use_local_storage';
 
 
 export const LoginForm = () => {
@@ -19,7 +17,6 @@ export const LoginForm = () => {
 	const checkStatusForm = (status: boolean) => {
 		setStatusForm(status);
 	};
-	const [userId] = UseLocalStorage('user_id', '');
 
 	const handleRequest = async () => {
 		if (requestCount >= 5) {
@@ -35,8 +32,7 @@ export const LoginForm = () => {
 
 	};
 
-	
-	const loginAuthForm = async (name: string, password: string) => {
+		const loginAuthForm = async (name: string, password: string) => {
 		if (name.trim() === '' || password.trim() === '') return;
 		try {
 			if (statusForm) {
@@ -73,11 +69,8 @@ export const LoginForm = () => {
 		document.addEventListener("keydown", handleKeyPress);
 		return () => document.removeEventListener("keydown", handleKeyPress);
 	}, []);
-	useEffect(() => {
-		if(!userId) {
-			alert(hiText)
-		}
-	}, []);
+
+	
 
 	return (
 		<div id={style.wrapper}>

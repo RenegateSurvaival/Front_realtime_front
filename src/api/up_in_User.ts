@@ -1,5 +1,5 @@
 import axios, { AxiosError } from 'axios';
-import UseLocalStorage from '../hooks/use_local_storage';
+
 
 export const registerUser = async (name: string, password: string) => {
 	try {
@@ -20,9 +20,7 @@ export const registerUser = async (name: string, password: string) => {
 	}
 };
 
-
 export const authUser = async (name: string, password: string) => {
-	const [, setUSserId] = UseLocalStorage('user_id', '');
 	try {
 		const response = await axios.post('http://localhost:8000/user/login', {
 			name: name,
@@ -33,7 +31,7 @@ export const authUser = async (name: string, password: string) => {
 		
 		// Перезагрузить страницу
 		window.location.reload();
-		setUSserId(response.data.token)
+		
 		return response.data.token;
 	} catch (error) {
 		const err = error as AxiosError;

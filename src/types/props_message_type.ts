@@ -10,5 +10,6 @@ export interface MessageData {
 	user_id: number | string;
 	user_avatar: string;
 	role: number;
+	setIsEditing?: any;
 }
 

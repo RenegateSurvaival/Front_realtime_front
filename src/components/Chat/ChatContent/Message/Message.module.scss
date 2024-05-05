@@ -12,7 +12,8 @@
     color: green;
     margin-bottom: 5px;
 		margin-right: 35%;
-		max-width: 15ch;
+		max-width: 20ch;
+		min-height: 3ch;
 		white-space: nowrap;
 		text-overflow: ellipsis;
 		overflow: hidden;
@@ -25,9 +26,12 @@
     height: calc(var(--index) * 2);
     border-radius: 50%;
     overflow: hidden;
-		
+		position: relative;
 
     img {
+			position: absolute;
+			top: 0;
+			left: 0;
       width: 100%;
       height: 100%;
     }
@@ -35,8 +39,8 @@
 
   .message_content {
     max-width: calc(100% - var(--index) * 3.5);
-    min-width: calc(var(--index) * 9.5);
-    height: auto;
+    min-width: calc(var(--index) * 10);
+		min-height: auto;
     background-color: var(--massage-bg-color);
     padding: calc(var(--index) * 0.3);
     border-radius: 8px;
@@ -58,7 +62,6 @@
       height: auto;
       word-wrap: break-word; /* Добавленное свойство для переноса слов */
 			font-size: calc(var(--index) * 0.9);
-    
     }
   }
 
@@ -98,10 +101,14 @@
 .message_owner {
   .message_content {
 			margin-left: auto;
+			p{
+				margin-top: 15%;
+			}
     &::after {
       content: '';
       right: -5px;
       transform: rotate(-55deg);
+			
     }
   }
 	.tools {
@@ -116,7 +123,7 @@
   }
 	.message_content {
     max-width: calc(100% - var(--index) * 10) !important;
-    min-width: calc(var(--index) * 7) !important;
+    min-width: calc(var(--index) * 10) !important;
 		padding: calc(var(--index) * .5) !important;
 	}
 }

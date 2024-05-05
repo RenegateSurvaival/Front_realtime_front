@@ -53,7 +53,7 @@ export const UserTools = ({ message }: MessageProps) => {
 				{myId && <button onClick={() => editMessageBtn()}><Pencil /></button>}
 				{isRole && <button onClick={() => deliteMessageBtn()}><MailX /></button>}
 			</div>
-			{isEditing && <EditModal message={message}/>}
+			{isEditing && <EditModal message={message} setIsEditing={setIsEditing}/>}
 		</>
 	);
 };

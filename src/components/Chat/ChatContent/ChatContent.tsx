@@ -13,6 +13,19 @@ export function ChatContent() {
 	const [isHandlerActive, setIsHandlerActive] = useState(true);
 	const messagesRef = useRef<HTMLDivElement>(null);
 	const [messageId, setMessageId] = useLocalStorage('MessageId', 0);
+	const [userId] = useLocalStorage('user_id', '');
+
+	useEffect(() => {
+		const handleReload = async () => {
+			if (!userId) {
+				await new Promise(resolve => setTimeout(resolve, 1000)); // Тормозим выполнение на 1 секунду
+				window.location.reload();
+			}
+		};
+	
+		handleReload();
+	}, []); 
+	
 
 	const fetchMessages = async () => {
 		try {

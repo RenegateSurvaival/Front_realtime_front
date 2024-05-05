@@ -48,7 +48,7 @@ export const Message: React.FC<MessageProps> = ({ message }: MessageProps) => {
                 </div>
             )}
             <div className={style.message_content}>
-                <h5 className={titleClass}>{message.name}</h5>
+                {!status && <h5 className={titleClass}>{message.name}</h5>}
                 <p>{message.message}</p>
                 <time>{message.time_send}</time>
             </div>

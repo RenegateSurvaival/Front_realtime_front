@@ -10,5 +10,6 @@ interface MessageData {
 	user_avatar: string;
 	role: number;
 	user_side?: boolean;
-	event?: any; // TODO: Define type for event object
+	event?: any;
+	setIsEditing?: any;
 }

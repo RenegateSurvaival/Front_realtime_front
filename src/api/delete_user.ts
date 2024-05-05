@@ -9,10 +9,10 @@ export const userDelete = async (token: string) => {
     });
 
     if (response.status !== 204) {
-      throw new Error('Response not ok');
+      alert('Пользователь удалён')
+			return response.data; // Возвращаем данные из ответа
     }
-
-    return response.data; // Возвращаем данные из ответа
+		
   } catch (error) {
     console.error('Ошибка:', error);
     return null; // Возвращаем null в случае ошибки

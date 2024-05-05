@@ -4,10 +4,11 @@ import { useSessionStorage } from '../../../../../../hooks/use_session_storage';
 import { editMessage } from '../../../../../../api/edit_message';
 
 type MessageProps = {
-	message: MessageData;
+  message: MessageData;
+  setIsEditing: (value: boolean) => void;
 };
 
-export const EditModal = ({ message }: MessageProps) => {
+export const EditModal = ({ message, setIsEditing}: MessageProps) => {
 	const { value } = useSessionStorage('access_token');
 	const [isText, setisText] = useState(message.message);
 	const editFormRef = useRef<HTMLTextAreaElement>(null);
@@ -15,9 +16,9 @@ export const EditModal = ({ message }: MessageProps) => {
 	const  handleSubmit = () => {
 	if(editFormRef.current && editFormRef.current.value){
 			editMessage(value, message.message_id, editFormRef.current.value)
+			setIsEditing(false)
 		}
 	}
-
 
 	const onChangeText = (event: any) => {
     setisText(event.target.value);

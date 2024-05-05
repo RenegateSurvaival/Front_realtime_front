@@ -5,7 +5,7 @@
 	transform: translate(-50%, -50%);
 	width: calc(var(--index) * 15);
 	min-width: 250px;
-	height: 400px;
+	min-height: 260px;
 	z-index: 100;
 	padding: 10px;
 	background-color: var(--two-main-bg-color);
@@ -15,16 +15,6 @@
 	flex-direction: column;
 	overflow: hidden;
 
-	.form {
-		width: 100%;
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
-		input {
-			width: 100%;
-			border-radius: 3px;
-		}
-	}
 
 	h2 {
 		font-size: var(--index);
@@ -35,21 +25,16 @@
 		font-size: var(--index);
 		text-align: center;
 		color: var(--font-color);
-		margin-top: 25%;
+		margin-top: 15%;
 		align-self: start;
-	}
-	h4 {
-		text-align: center;
-		font-size: calc(var(--index) * .8);
-		color: var(--font-color);
-		margin: 6%;
+		color: green;
 	}
 
 	span {
 		display: block;
 		color: #8a95ad;
-		font-size: var(--index);
-		margin-top: 20%;
+		font-size: calc(var(--index) * .8);
+		margin-top: 10%;
 	}
 
 	&>div {
@@ -76,7 +61,7 @@
 	}
 
 		img{
-			margin-top: 40%;
+			margin-top: 15%;
 			height: 86px;
 			width: 86px;
 			border-radius: 50%;

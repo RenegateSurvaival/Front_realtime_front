@@ -1,5 +1,5 @@
 .chat_form {
-	height: 15%;
+	height: 10%;
 	grid-area: f;
 	display: flex;
 	justify-content: center;
@@ -10,6 +10,8 @@
 		width: 60%;
 		height: auto;
 		margin: 2%;
+		margin-bottom: auto;
+		margin-bottom: .02%;
 		
 		.text_input{
 			height: auto;
@@ -22,10 +24,13 @@
 				text-decoration: none;
 			}
 			.smile {
-				width: calc(var(--index) * 3);
-				height: calc(var(--index) * 3);
-				font-size: calc(var(--index) * 3);
-				margin-right: 2%;
+				width: var(--index);
+				height: var(--index);
+				max-width: 20px;
+				max-height: 20px;
+				font-size: 2px;
+				color: #ccc;
+				margin: 1% 6% 8% 2%;
 			}
 			textarea {
 				background-color: var(--two-main-bg-color);
@@ -69,6 +74,13 @@
 			}
 		}
 	}
+}
+
+.emoji_picker {
+	position: fixed;
+	left: 30%;
+	top: 20%;
+	z-index: 1000;
 }
 
 @media screen and (max-width: 500px) {

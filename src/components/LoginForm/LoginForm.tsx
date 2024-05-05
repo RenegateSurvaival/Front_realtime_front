@@ -4,21 +4,24 @@ import { validateUsername } from '../../validations/login';
 import { validatePassword } from '../../validations/password';
 import style from './LoginForm.module.scss';
 import { useEffect, useState } from 'react';
+import { hiText } from './hi_text';
+import useLocalStorage from '../../hooks/use_local_storage';
 
 
 export const LoginForm = () => {
+	const [userId] = useLocalStorage('user_id', '');
 	const [name, setName] = useState('');
 	const [password, setPassword] = useState('');
 	const { updateSessionStorage } = useSessionStorage('access_token');
 	const [statusForm, setStatusForm] = useState(false);
 	const [statusPassInput, setStatusPassInput] = useState('password');
-	const [requestCount, setRequestCount] = useState(0);
-	const [isRequesting, setRequesting] = useState(false);
+	//const [requestCount, setRequestCount] = useState(0);
+	const [isRequesting, /*setRequesting*/] = useState(false);
 	const checkStatusForm = (status: boolean) => {
 		setStatusForm(status);
 	};
 
-	const handleRequest = async () => {
+	/*const handleRequest = async () => {
 		if (requestCount >= 5) {
 			alert('Можно отправлять запрос раз в 5 секунд');
 			setRequesting(true);
@@ -29,10 +32,10 @@ export const LoginForm = () => {
 		}
 		// Ваша логика отправки запроса
 		setRequestCount(requestCount + 1);
+	};*/
 
-	};
-
-		const loginAuthForm = async (name: string, password: string) => {
+	
+	const loginAuthForm = async (name: string, password: string) => {
 		if (name.trim() === '' || password.trim() === '') return;
 		try {
 			if (statusForm) {
@@ -62,7 +65,7 @@ export const LoginForm = () => {
 	const handleKeyPress = (event: any) => {
     if (event.key === 'Enter') {
 			loginAuthForm(name, password); 
-			handleRequest();
+			//handleRequest();
     }
   };
 	useEffect(() => {
@@ -70,7 +73,11 @@ export const LoginForm = () => {
 		return () => document.removeEventListener("keydown", handleKeyPress);
 	}, []);
 
-	
+	useEffect(() => {
+		if(!userId) {
+			alert(hiText)
+		}
+	}, []);
 
 	return (
 		<div id={style.wrapper}>
@@ -82,7 +89,7 @@ export const LoginForm = () => {
 				<div className='input_group'>
 					<input type={statusPassInput} id={style.pass} onChange={(e) => setPassword(e.target.value)} name="pass" placeholder="password" value={password} />
 				</div>
-				<button type="button" disabled={isRequesting} onKeyUp={handleKeyPress} onClick={() => { loginAuthForm(name, password); handleRequest(); }}>&#xf0da;</button>
+				<button type="button" disabled={isRequesting} onKeyUp={handleKeyPress} onClick={() => { loginAuthForm(name, password); /*handleRequest();*/ }}>&#xf0da;</button>
 			</form>
 
 			<div>

@@ -15,7 +15,7 @@ export function ChatContent() {
 	const [messageId, setMessageId] = useLocalStorage('MessageId', 0);
 	const [userId] = useLocalStorage('user_id', '');
 
-	useEffect(() => {
+	/*useEffect(() => {
 		const handleReload = async () => {
 			if (!userId) {
 				await new Promise(resolve => setTimeout(resolve, 1000)); // Тормозим выполнение на 1 секунду
@@ -24,7 +24,7 @@ export function ChatContent() {
 		};
 	
 		handleReload();
-	}, []); 
+	}, []); */
 	
 
 	const fetchMessages = async () => {

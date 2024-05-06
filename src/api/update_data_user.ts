@@ -1,7 +1,7 @@
 import axios, { AxiosError } from 'axios';
 import { backendURL } from './api_config';
 
-export const updateDataUser = async (name: string, password: string, token: string) => {
+export const updateDataUser = async (data_update: any, token: string) => {
  
 
  try {
@@ -9,10 +9,7 @@ export const updateDataUser = async (name: string, password: string, token: stri
 		jwt_token: {
 			token: token
 	 },
-	 data_update: {
-			name: name,
-			password: password
-	 }
+	 data_update
    });
 
    console.log(response);

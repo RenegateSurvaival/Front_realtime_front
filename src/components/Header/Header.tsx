@@ -6,7 +6,7 @@ import { SettingHeaderModal } from './settingHeaderModal/SettingHeaderModal';
 import { ProfileHeaderModal } from './ProfileHeaderModal/ProfileHeaderModal';
 import { getUserInfo } from '../../api/get_user_info';
 import { useSessionStorage } from '../../hooks/use_session_storage';
-import { backendHttpURL } from '../../api/api_config';
+import { backendURL } from '../../api/api_config';
 
 export function Header() {
 
@@ -34,7 +34,7 @@ export function Header() {
 		if (value) {
 			getUserInfo(value)
 				.then(data => {
-					setImgAvatarUrl(`${backendHttpURL}${data.user_avatar}`);
+					setImgAvatarUrl(`${backendURL}${data.user_avatar}`);
 				})
 				.catch(error => {
 					console.error('Произошла ошибка:', error);

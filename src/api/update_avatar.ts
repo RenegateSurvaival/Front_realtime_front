@@ -13,7 +13,7 @@ export const updateAvatarUser = async (token: string, file: File) => {
    });
 
    console.log(response);
-   alert('Данные обновлены');
+   alert('Аватар обновлён, чтобы увидеть обновлённую версию аватара пожалуйста обновите страницу.');
  } catch (error) {
    const err = error as AxiosError;
 

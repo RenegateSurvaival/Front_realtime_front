@@ -5,7 +5,7 @@ import { useSessionStorage } from '../../../../hooks/use_session_storage';
 import { validatePassword } from '../../../../validations/password';
 import { validateUsername } from '../../../../validations/login';
 
-export const LoginPsswordUpdate = ({setLogPassModal}: any) => {
+export const LoginPsswordUpdate = ({ setLogPassModal }: any) => {
 
 	const { value } = useSessionStorage('access_token');
 	const [loginText, setloginText] = useState('');
@@ -20,11 +20,18 @@ export const LoginPsswordUpdate = ({setLogPassModal}: any) => {
 		setPassText(event.target.value);
 	};
 
+	interface UserData {
+		name?: string;
+		password?: string;
+	}
+
 	const dataUpdate = () => {
-		if (loginText.trim() === '' || passText.trim() === '') return;
-		if (!validatePassword(passText)) return alert('Пароль должен состоять минимум из 1 цифры, 1 буквы верхнего регистра и 1 спецсимвола');
-		if (!validateUsername(loginText)) return alert('Имя должно быть 3-10 символов! Спецсимволы использовать нельзя');
-		updateDataUser(loginText, passText, value);
+		let UserData : UserData = {};
+		if (loginText.trim() === '' && passText.trim() === '') return;
+		if (loginText.trim()) { UserData.name = loginText; if (!validateUsername(loginText)) return alert('Имя должно быть 3-10 символов! Спецсимволы использовать нельзя');}
+		if (passText.trim()) { UserData.password = passText;if (!validatePassword(passText)) return alert('Пароль должен состоять минимум из 7 символов. 1 цифры, 1 буквы верхнего регистра и 1 спецсимвола.');}
+		console.log(UserData)
+		updateDataUser(UserData, value);
 		setLogPassModal(false);
 	};
 
@@ -40,9 +47,9 @@ export const LoginPsswordUpdate = ({setLogPassModal}: any) => {
 					<h4>Обновить данные</h4>
 					<input onChange={changeloginText} type="text" name="login" id="login" placeholder='login' autoComplete="off" />
 					<input onChange={changePassText} type={statusPassInput} name="password" id="pass" placeholder='password' value={passText} />
-					<button type='button' onClick={()=>dataUpdate()}>Сохранить</button>
+					<button type='button' onClick={() => dataUpdate()}>Сохранить</button>
 					<button onClick={inputToggle} id={style.up_btn}>{statusPassInput === 'password' ? 'Показать пароль' : 'Скрыть пароль'}</button>
-					<button type='button' onClick={()=>setLogPassModal(false)}>Отмена</button>
+					<button type='button' onClick={() => setLogPassModal(false)}>Отмена</button>
 				</div>
 			</div>
 		</div>

@@ -15,13 +15,13 @@ export const LoginForm = () => {
 	const { updateSessionStorage } = useSessionStorage('access_token');
 	const [statusForm, setStatusForm] = useState(false);
 	const [statusPassInput, setStatusPassInput] = useState('password');
-	//const [requestCount, setRequestCount] = useState(0);
-	const [isRequesting, /*setRequesting*/] = useState(false);
+	const [requestCount, setRequestCount] = useState(0);
+	const [isRequesting, setRequesting] = useState(false);
 	const checkStatusForm = (status: boolean) => {
 		setStatusForm(status);
 	};
 
-	/*const handleRequest = async () => {
+		const handleRequest = async () => {
 		if (requestCount >= 5) {
 			alert('Можно отправлять запрос раз в 5 секунд');
 			setRequesting(true);
@@ -32,14 +32,14 @@ export const LoginForm = () => {
 		}
 		// Ваша логика отправки запроса
 		setRequestCount(requestCount + 1);
-	};*/
+	};
 
 	
 	const loginAuthForm = async (name: string, password: string) => {
 		if (name.trim() === '' || password.trim() === '') return;
 		try {
 			if (statusForm) {
-				if (!validatePassword(password)) return alert('Пароль должен состоять минимум из 1 цифры, 1 буквы верхнего регистра и 1 спецсимвола, не менее 7 символов.');
+				if (!validatePassword(password)) return alert('Пароль должен состоять минимум из 7 символов. 1 цифры, 1 буквы верхнего регистра и 1 спецсимвола.');
 				if (!validateUsername(name)) return alert('Имя должно быть 3-10 символов! Спецсимволы использовать нельзя');
 				await registerUser(name, password);
 
@@ -65,7 +65,7 @@ export const LoginForm = () => {
 	const handleKeyPress = (event: any) => {
     if (event.key === 'Enter') {
 			loginAuthForm(name, password); 
-			//handleRequest();
+			handleRequest();
     }
   };
 	useEffect(() => {

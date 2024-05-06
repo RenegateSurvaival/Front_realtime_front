@@ -7,7 +7,7 @@ import { updateAvatarUser } from '../../../api/update_avatar';
 import { ImageUp } from 'lucide-react';
 import { userDelete } from '../../../api/delete_user';
 import { LoginPsswordUpdate } from './LoginPsswordUpdate/LoginPsswordUpdate';
-import { backendHttpURL } from '../../../api/api_config';
+import { backendURL } from '../../../api/api_config';
 
 export const ProfileHeaderModal = ({ isOpenProfile }: any) => {
 	const fileInputRef = useRef<HTMLInputElement>(null);
@@ -47,7 +47,7 @@ export const ProfileHeaderModal = ({ isOpenProfile }: any) => {
 		if (value) {
 			getUserInfo(value)
 				.then(data => {
-					setImgAvatarUrl(`${backendHttpURL}${data.user_avatar}`);
+					setImgAvatarUrl(`${backendURL}${data.user_avatar}`);
 					setloginText(data.name);
 					setUSserId(data.user_id)
 					setRole(data.role)
@@ -92,7 +92,7 @@ export const ProfileHeaderModal = ({ isOpenProfile }: any) => {
 							<span>Роль: {status}</span>
 						</div>
 					</div>
-					<button className={style.save} onClick={() => setLogPassModal(!logPassModal)}>Обновить логин и пароль</button>
+					<button className={style.save} onClick={() => {setLogPassModal(!logPassModal)}}>Обновить логин и пароль</button>
 					<button className={style.exit} onClick={exitProfile}>Выход</button>
 					<button onClick={userDel} className={style.delete_btn}>Удалить акаунт</button>
 				</div>

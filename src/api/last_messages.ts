@@ -1,8 +1,9 @@
 import axios from 'axios';
+import { backendURL } from './api_config';
 
 export const lastMessages = async () => {
   try {
-    const response = await axios.get('http://localhost:8000/routers/last_messages', {
+    const response = await axios.get(`${backendURL}/routers/last_messages`, {
       headers: {
         'Content-Type': 'application/json'
       }

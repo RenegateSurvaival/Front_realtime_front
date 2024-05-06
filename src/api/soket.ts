@@ -1,11 +1,7 @@
-// Подключение к серверу по веб-сокету
-export const socket = new WebSocket('ws://localhost:8000/ws');
+import { backendSoketURL } from "./api_config";
 
-// Функция для обработки входящих сообщений
-socket.onmessage = (event) => {
-	const receivedMessage = JSON.parse(event.data);
-	console.log(receivedMessage);
-};
+// Подключение к серверу по веб-сокету
+export const socket = new WebSocket(backendSoketURL);
 
 // Открываем соединение с сервером
 socket.onopen = () => {

@@ -1,8 +1,9 @@
 import axios, { AxiosError } from 'axios';
+import { backendURL } from './api_config';
 
 export const editMessage = async (token: string, id: number, message: string) => {
  try {
-  await axios.patch('http://localhost:8000/routers/update', {
+  await axios.patch(`${backendURL}/routers/update`, {
 		"token": token,
 		"message_id": id,
 		"message": message

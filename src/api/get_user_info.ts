@@ -1,8 +1,9 @@
 import axios from 'axios';
+import { backendURL } from './api_config';
 
 export const getUserInfo = async (token: string) => {
   try {
-    const response = await axios.post('http://localhost:8000/user/me', {
+    const response = await axios.post(`${backendURL}/user/me`, {
       token: token
     });
 

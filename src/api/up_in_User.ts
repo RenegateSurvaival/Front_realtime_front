@@ -1,9 +1,10 @@
 import axios, { AxiosError } from 'axios';
+import { backendURL } from './api_config';
 
 
 export const registerUser = async (name: string, password: string) => {
 	try {
-			await axios.post('http://localhost:8000/auth/register-user', {
+			await axios.post(`${backendURL}/auth/register-user`, {
 			name: name,
 			password: password
 		});
@@ -22,12 +23,10 @@ export const registerUser = async (name: string, password: string) => {
 
 export const authUser = async (name: string, password: string) => {
 	try {
-		const response = await axios.post('http://localhost:8000/user/login', {
+		const response = await axios.post(`${backendURL}/user/login`, {
 			name: name,
 			password: password
 		});
-
-		console.log('Пользователь успешно авторизирован:', response.data.token);
 		
 		// Перезагрузить страницу
 		window.location.reload();

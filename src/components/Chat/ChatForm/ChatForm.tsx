@@ -46,7 +46,7 @@ export function ChatForm() {
 
   const disconnectSocket = () => {
     socket.close();
-    alert('You have been disconnected from the chat due to inactivity. Please refresh the page to reconnect.');
+    alert('Вы были отключены от чата из-за неактивности. Пожалуйста, обновите страницу для повторного подключения.');
   };
 
   const resetTimer = () => {

@@ -1,4 +1,5 @@
 import axios, { AxiosError } from "axios";
+import { backendURL } from "./api_config";
 
 interface MessageData {
   token: string;
@@ -12,7 +13,7 @@ export const deleteMessage = async (token: string, id: number) => {
   };
 
   try {
-    await axios.delete("http://localhost:8000/routers/delete-message", {
+    await axios.delete(`${backendURL}/routers/delete-message`, {
       data: data,
     });
 

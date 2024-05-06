@@ -3,6 +3,7 @@ import style from './Message.module.scss';
 import { MessageData } from '../../../../types/props_message_type';
 import UseLocalStorage from '../../../../hooks/use_local_storage';
 import { UserTools } from './UserTools/UserTools';
+import { backendHttpURL } from '../../../../api/api_config';
 
 type MessageProps = {
     message: MessageData;
@@ -44,7 +45,7 @@ export const Message: React.FC<MessageProps> = ({ message }: MessageProps) => {
         >
             {!status && (
                 <div className={style.avatar}>
-                    <img src={`http://127.0.0.1:8000${message.user_avatar}`} alt="Avatar" />
+                    <img src={`${backendHttpURL}${message.user_avatar}`} alt="Avatar" />
                 </div>
             )}
             <div className={style.message_content}>

@@ -1,10 +1,11 @@
 import axios, { AxiosError } from 'axios';
+import { backendURL } from './api_config';
 
 export const updateDataUser = async (name: string, password: string, token: string) => {
  
 
  try {
-   const response = await axios.patch('http://localhost:8000/user/update', {
+   const response = await axios.patch(`${backendURL}/user/update`, {
 		jwt_token: {
 			token: token
 	 },

@@ -13,7 +13,7 @@ export function ChatContent() {
 	const [isHandlerActive, setIsHandlerActive] = useState(true);
 	const messagesRef = useRef<HTMLDivElement>(null);
 	const [messageId, setMessageId] = useLocalStorage('MessageId', 0);
-	const [userId] = useLocalStorage('user_id', '');
+	//const [userId] = useLocalStorage('user_id', '');
 
 	/*useEffect(() => {
 		const handleReload = async () => {

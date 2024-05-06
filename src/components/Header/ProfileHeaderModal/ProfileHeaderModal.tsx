@@ -7,6 +7,7 @@ import { updateAvatarUser } from '../../../api/update_avatar';
 import { ImageUp } from 'lucide-react';
 import { userDelete } from '../../../api/delete_user';
 import { LoginPsswordUpdate } from './LoginPsswordUpdate/LoginPsswordUpdate';
+import { backendHttpURL } from '../../../api/api_config';
 
 export const ProfileHeaderModal = ({ isOpenProfile }: any) => {
 	const fileInputRef = useRef<HTMLInputElement>(null);
@@ -46,7 +47,7 @@ export const ProfileHeaderModal = ({ isOpenProfile }: any) => {
 		if (value) {
 			getUserInfo(value)
 				.then(data => {
-					setImgAvatarUrl(`http://127.0.0.1:8000${data.user_avatar}`);
+					setImgAvatarUrl(`${backendHttpURL}${data.user_avatar}`);
 					setloginText(data.name);
 					setUSserId(data.user_id)
 					setRole(data.role)

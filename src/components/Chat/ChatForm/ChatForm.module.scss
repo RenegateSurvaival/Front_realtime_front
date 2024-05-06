@@ -9,12 +9,11 @@
 	.input_text_message {
 		width: 60%;
 		height: auto;
-		margin: 2%;
+		margin: 3%;
 		margin-bottom: auto;
 		margin-bottom: .02%;
 		
 		.text_input{
-			height: auto;
 			display: flex;
 			justify-content: center;
 			align-items: center;
@@ -24,20 +23,18 @@
 				text-decoration: none;
 			}
 			.smile {
-				width: var(--index);
-				height: var(--index);
-				max-width: 20px;
-				max-height: 20px;
-				font-size: 2px;
+				width: calc(var(--index) * 2);
+				height: calc(var(--index) * 2);
+				font-size: calc(var(--index) * 2);
+				margin: 0 2%;
 				color: #ccc;
-				margin: 1% 6% 8% 2%;
 			}
 			textarea {
 				background-color: var(--two-main-bg-color);
 				color: var(--font-color);
 				resize: none;
-				height: auto;
-				width: 80%;
+				height: 30px;
+				width: 100%;
 				border: none;
 				border-radius: 10px;
 				border: 2px solid #ccc;
@@ -53,8 +50,8 @@
 			.send_btn {
 				position: relative;
 				background-color: #2497d1;
-				width: calc(var(--index) * 3);
-				height: calc(var(--index) * 3);
+				width: calc(var(--index) * 2);
+				height: calc(var(--index) * 2);
 				color: var(--two-main-bg-color);
 				border-radius: 50%;
 				margin: 0 1%;
@@ -77,14 +74,17 @@
 }
 
 .emoji_picker {
-	position: fixed;
-	left: 30%;
-	top: 20%;
-	z-index: 1000;
+	position: relative;
+	top: -450px;
+	right: 0;
+	z-index: 30;
 }
 
 @media screen and (max-width: 500px) {
   .input_text_message  {
     width: 95% !important;
   }
+	.emoji_picker {
+		right: 400px;
+	}
 }

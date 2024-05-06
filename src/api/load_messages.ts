@@ -1,8 +1,9 @@
 import axios from 'axios';
+import { backendURL } from './api_config';
 
 export const loadMessages = async (id: number) => {
   try {
-    const response = await axios.post('http://localhost:8000/routers/load', {
+    const response = await axios.post(`${backendURL}/routers/load`, {
 				"id_message": id
     });
 

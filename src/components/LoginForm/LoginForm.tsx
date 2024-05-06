@@ -74,9 +74,12 @@ export const LoginForm = () => {
 	}, []);
 
 	useEffect(() => {
-		if(!userId) {
-			alert(hiText)
-		}
+		setTimeout( () => {
+			if(!userId) {
+				alert(hiText)
+			}
+		}, 1000)
+		
 	}, []);
 
 	return (

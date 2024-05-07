@@ -8,6 +8,7 @@ import { ImageUp } from 'lucide-react';
 import { userDelete } from '../../../api/delete_user';
 import { LoginPsswordUpdate } from './LoginPsswordUpdate/LoginPsswordUpdate';
 import { backendURL } from '../../../api/api_config';
+import { getImageExtension } from '../../../validations/img';
 
 export const ProfileHeaderModal = ({ isOpenProfile }: any) => {
 	const fileInputRef = useRef<HTMLInputElement>(null);
@@ -25,7 +26,12 @@ export const ProfileHeaderModal = ({ isOpenProfile }: any) => {
 	const avatarUpdate = () => {
 		if (fileInputRef.current && fileInputRef.current.files) {
 			const file = fileInputRef.current.files[0];
-			updateAvatarUser(value, file);
+			if(getImageExtension(file.name)) {
+				updateAvatarUser(value, file);
+				alert('Аватар обновлён, чтобы увидеть обновлённую версию аватара пожалуйста обновите страницу.');
+			} else {
+				alert('не верный формат файла')
+			}
 		}
 	};
 

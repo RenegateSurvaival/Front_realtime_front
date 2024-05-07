@@ -46,7 +46,7 @@
     border-radius: 8px;
     position: relative;
 		color: var(--font-color);
-		text-align: right;
+		text-align: justify;
     z-index: 1;
 		
     &::after {
@@ -102,7 +102,7 @@
   .message_content {
 			margin-left: auto;
 			p{
-				margin-top: 15%;
+				margin-top: 100px;
 			}
     &::after {
       content: '';
